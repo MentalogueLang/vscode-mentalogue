@@ -3,6 +3,7 @@
   "displayName": "Mentalogue Language",
   "description": "Syntax highlighting, IntelliSense, and diagnostics for Mentalogue (.mtl/.mlib).",
   "version": "0.1.0",
+  "license": "MIT",
   "publisher": "MentalogueLang",
   "engines": {
     "vscode": "^1.85.0"
