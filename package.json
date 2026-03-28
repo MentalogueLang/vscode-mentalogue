@@ -1,0 +1,121 @@
+{
+  "name": "mentalogue-language",
+  "displayName": "Mentalogue Language",
+  "description": "Syntax highlighting, IntelliSense, and diagnostics for Mentalogue (.mtl/.mlib).",
+  "version": "0.1.0",
+  "publisher": "MentalogueLang",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<your-username>/vscode-mentalogue.git"
+  },
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "mentalogue",
+        "aliases": [
+          "Mentalogue",
+          "mentalogue"
+        ],
+        "extensions": [
+          ".mtl"
+        ],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "mentalogue-mlib",
+        "aliases": [
+          "Mentalogue Library",
+          "mentalogue-mlib"
+        ],
+        "extensions": [
+          ".mlib"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mentalogue",
+        "scopeName": "source.mentalogue",
+        "path": "./syntaxes/mentalogue.tmLanguage.json"
+      },
+      {
+        "language": "mentalogue-mlib",
+        "scopeName": "source.mentalogue",
+        "path": "./syntaxes/mentalogue.tmLanguage.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "mentalogue.refreshIndex",
+        "title": "Mentalogue: Refresh IntelliSense Index"
+      },
+      {
+        "command": "mentalogue.runCheck",
+        "title": "Mentalogue: Run Inscribe Check"
+      },
+      {
+        "command": "mentalogue.suturePull",
+        "title": "Mentalogue: Suture Pull In Workspace"
+      }
+    ],
+    "configuration": {
+      "title": "Mentalogue",
+      "properties": {
+        "mentalogue.inscribePath": {
+          "type": "string",
+          "default": "inscribe",
+          "description": "Path to the inscribe executable used for diagnostics."
+        },
+        "mentalogue.suturePath": {
+          "type": "string",
+          "default": "suture",
+          "description": "Path to the suture executable used by the Suture Pull command."
+        },
+        "mentalogue.enablePeriodicCheck": {
+          "type": "boolean",
+          "default": true,
+          "description": "Periodically run `inscribe check` on the active .mtl file."
+        },
+        "mentalogue.checkIntervalMs": {
+          "type": "number",
+          "default": 1500,
+          "minimum": 300,
+          "description": "Interval in milliseconds for periodic `inscribe check` runs."
+        },
+        "mentalogue.checkOnSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run `inscribe check` when an .mtl file is saved."
+        },
+        "mentalogue.checkTimeoutMs": {
+          "type": "number",
+          "default": 12000,
+          "minimum": 1000,
+          "description": "Timeout in milliseconds for each `inscribe check` invocation."
+        },
+        "mentalogue.checkUnsavedChanges": {
+          "type": "boolean",
+          "default": true,
+          "description": "When enabled, checks unsaved edits by running inscribe against a temporary snapshot."
+        },
+        "mentalogue.indexMlib": {
+          "type": "boolean",
+          "default": true,
+          "description": "Index .mlib files for symbol completion/hover when source is unavailable."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "test": "echo \"No tests yet\""
+  }
+}

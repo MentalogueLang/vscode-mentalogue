@@ -1,0 +1,125 @@
+{
+  "name": "Mentalogue",
+  "scopeName": "source.mentalogue",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#types"
+    },
+    {
+      "include": "#declarations"
+    },
+    {
+      "include": "#calls"
+    },
+    {
+      "include": "#constants"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.double-slash.mentalogue",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.mentalogue",
+          "begin": "/\\*",
+          "end": "\\*/"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.mentalogue",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.mentalogue",
+              "match": "\\\\."
+            }
+          ]
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.mentalogue",
+          "match": "\\b\\d+(?:\\.\\d+)?\\b"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.mentalogue",
+          "match": "\\b(fn|struct|enum|const|let|if|else|while|for|in|return|import|pub|priv|comptime)\\b"
+        }
+      ]
+    },
+    "types": {
+      "patterns": [
+        {
+          "name": "storage.type.mentalogue",
+          "match": "\\b(int|bool|byte|string|float|void)\\b"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.mentalogue",
+          "match": "\\b(true|false)\\b"
+        },
+        {
+          "name": "constant.other.enum.mentalogue",
+          "match": "\\b[A-Z][A-Za-z0-9_]*\\b"
+        }
+      ]
+    },
+    "declarations": {
+      "patterns": [
+        {
+          "name": "entity.name.function.mentalogue",
+          "match": "\\bfn\\s+([A-Za-z_][A-Za-z0-9_]*)\\b"
+        },
+        {
+          "name": "entity.name.type.struct.mentalogue",
+          "match": "\\bstruct\\s+([A-Za-z_][A-Za-z0-9_]*)\\b"
+        },
+        {
+          "name": "entity.name.type.enum.mentalogue",
+          "match": "\\benum\\s+([A-Za-z_][A-Za-z0-9_]*)\\b"
+        }
+      ]
+    },
+    "calls": {
+      "patterns": [
+        {
+          "name": "support.function.mentalogue",
+          "match": "\\b([A-Za-z_][A-Za-z0-9_]*)\\s*(?=\\()"
+        }
+      ]
+    }
+  },
+  "fileTypes": [
+    "mtl",
+    "mlib"
+  ],
+  "uuid": "4d4f8e34-1cb7-43f8-80b0-1c0dbb34d6f1"
+}
